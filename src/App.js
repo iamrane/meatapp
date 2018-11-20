@@ -1,10 +1,22 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import isEmpty from 'lodash/isEmpty';
+import uniqBy from 'lodash/uniqBy';
 import { Formik, Form } from 'formik';
 import data from './mock.json';
 import background from './background.jpg';
-import logoImg from './logo.png';
+import logoImg from './logo-swe.png';
+import closeIcon from './icons/cancel-100.png';
+
+import temperature from './icons/temperature-white-100.png';
+import oven from './icons/cooker-white-100.png';
+
+import steak from './icons/steak-white-100.png';
+import pig from './icons/pig-white-100.png';
+import lamb from './icons/rack-of-lamb-white-100.png';
+import chicken from './icons/thanksgiving-white-100.png';
+import fish from './icons/whole-fish-white-100.png';
+import deer from './icons/deer-white-100.png';
 
 const GlobalStyles = createGlobalStyle`
 	html, body, #root {
@@ -23,7 +35,6 @@ const Container = styled.div`
 	position: absolute;
 	width: 100%;
 	padding: 1rem;
-	transition: all 0.2s ease;
 
 	${props =>
 		props.isSearching
@@ -41,6 +52,7 @@ const List = styled.div`
 	margin-top: 1rem;
 `;
 const Item = styled.div`
+	position: relative;
 	color: #fff;
 	border: 0.5rem solid rgba(255, 255, 255, 0.3);
 	padding: 1rem;
@@ -63,17 +75,11 @@ const CloseIcon = styled.div`
 	position: absolute;
 	right: 1rem;
 	top: 50%;
-	border-radius: 100%;
-	background: rgba(0, 0, 0, 0.6);
-	color: #fff;
-	height: 1.5rem;
-	width: 1.5rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	height: 25px;
+	width: 25px;
 	transform: translateY(-50%);
-	font-size: 0.7rem;
-	font-weight: bold;
+	background: url(${closeIcon}) no-repeat center center;
+	background-size: 100% 100%;
 `;
 const NoResult = styled.p`
 	color: white;
@@ -95,8 +101,65 @@ const Tips = styled.div`
 	}
 `;
 
-function getText(id) {
-	return data.texts.find(text => text.id === id).text;
+const MeatGroupIcon = styled.img`
+	display: block;
+	width: 50px;
+	position: absolute;
+	right: 1rem;
+	top: 1rem;
+`;
+
+const MeatName = styled.h3`
+	margin: 0;
+	font-size: 1.17rem;
+`;
+
+const InfoText = styled.p`
+	margin: 0.5rem 0 0;
+	display: flex;
+	align-items: center;
+	font-size: 0.875rem;
+`;
+
+const InfoIcon = styled.img`
+	display: inline-block;
+	width: 30px;
+	margin-right: 0.5rem;
+`;
+
+const TipsButton = styled.button`
+	font-size: 100%;
+	font-family: inherit;
+	border: 0;
+	padding: 0;
+	background: transparent;
+	color: inherit;
+	text-decoration: underline;
+
+	&:hover {
+		cursor: pointer;
+	}
+`;
+
+function getMeatGroupIcon(meatGroup) {
+	switch (meatGroup) {
+		case 'Kalv':
+		case 'Nötkött':
+			return steak;
+		case 'Fläsk':
+			return pig;
+		case 'Lamm':
+			return lamb;
+		case 'Vilt':
+			return deer;
+		case 'Kyckling':
+		case 'Kalkon':
+			return chicken;
+		case 'Fisk':
+			return fish;
+		default:
+			return undefined;
+	}
 }
 
 function App() {
@@ -108,9 +171,13 @@ function App() {
 			}}
 		>
 			{({ values, handleChange, handleBlur, setFieldValue }) => {
-				const filterName = data.meats.filter(meat => meat.name.includes(values.search));
-				const filterTags = data.meats.filter(meat => meat.meatGroup.includes(values.search));
-				const result = [...filterName, ...filterTags];
+				const filterName = data.meats.filter(meat =>
+					meat.name.toLowerCase().includes(values.search.toLowerCase())
+				);
+				const filterTags = data.meats.filter(meat =>
+					meat.meatGroup.toLowerCase().includes(values.search.toLowerCase())
+				);
+				const result = uniqBy([...filterName, ...filterTags], 'name');
 
 				const handleClick = text => evt => {
 					evt.preventDefault();
@@ -129,53 +196,28 @@ function App() {
 									onBlur={handleBlur}
 									value={values.search}
 									placeholder="Vilket kött undrar du över?"
+									autoComplete="off"
 								/>
-								{values.search && <CloseIcon onClick={handleClick('')}>x</CloseIcon>}
+								{values.search && <CloseIcon onClick={handleClick('')} />}
 							</SearchFieldWrapper>
 
 							{!values.search ? (
 								<>
 									<Tips key="meatGroup">
-										<a href="#" onClick={handleClick('Nöt')}>
-											Nöt
-										</a>
-										,{' '}
-										<a href="#" onClick={handleClick('Fläsk')}>
-											Fläsk
-										</a>
-										,{' '}
-										<a href="#" onClick={handleClick('Vilt')}>
-											Vilt
-										</a>
-										,{' '}
-										<a href="#" onClick={handleClick('Kyckling')}>
-											Kyckling
-										</a>
-										,{' '}
-										<a href="#" onClick={handleClick('Fisk')}>
-											Fisk
-										</a>
+										<TipsButton onClick={handleClick('Nöt')}>Nöt</TipsButton>,{' '}
+										<TipsButton onClick={handleClick('Fläsk')}>Fläsk</TipsButton>,{' '}
+										<TipsButton onClick={handleClick('Vilt')}>Vilt</TipsButton>,{' '}
+										<TipsButton onClick={handleClick('Kyckling')}>Kyckling</TipsButton>,{' '}
+										<TipsButton onClick={handleClick('Fisk')}>Fisk</TipsButton>
 									</Tips>
 									<Tips key="meatNames">
-										<a href="#" onClick={handleClick('Märgpipa')}>
-											Märgpipa
-										</a>
-										,{' '}
-										<a href="#" onClick={handleClick('Sidfläsk')}>
-											Sidfläsk
-										</a>
-										,{' '}
-										<a href="#" onClick={handleClick('Älgfilé')}>
-											Älgfilé
-										</a>
-										,{' '}
-										<a href="#" onClick={handleClick('Kycklingvingar')}>
-											Kycklingvingar
-										</a>
-										,{' '}
-										<a href="#" onClick={handleClick('Tonfisk albacore')}>
+										<TipsButton onClick={handleClick('Märgpipa')}>Märgpipa</TipsButton>,{' '}
+										<TipsButton onClick={handleClick('Sidfläsk')}>Sidfläsk</TipsButton>,{' '}
+										<TipsButton onClick={handleClick('Älgfilé')}>Älgfilé</TipsButton>,{' '}
+										<TipsButton onClick={handleClick('Kycklingvingar')}>Kycklingvingar</TipsButton>,{' '}
+										<TipsButton onClick={handleClick('Tonfisk albacore')}>
 											Tonfisk albacore
-										</a>
+										</TipsButton>
 									</Tips>
 								</>
 							) : (
@@ -184,32 +226,37 @@ function App() {
 										<NoResult>Hittade inte köttbiten du letade efter :(</NoResult>
 									) : (
 										<List>
-											{result.map(meat => (
-												<Item key={meat.name}>
-													<h3>{meat.name}</h3>
-													{meat.minInnerTemp && (
-														<>
-															<h4>{getText('innerTemperature')}</h4>
-															<p>
-																{meat.minInnerTemp === meat.maxInnerTemp
-																	? `${meat.minInnerTemp}°`
-																	: `${meat.minInnerTemp}-${meat.maxInnerTemp}°`}
-															</p>
-														</>
-													)}
+											{result.map(meat => {
+												const meatGroupIcon = getMeatGroupIcon(meat.meatGroup);
 
-													{meat.minOvenTemp && (
-														<>
-															<h4>{getText('ovenTemperature')}</h4>
-															<p>
-																{meat.minOvenTemp === meat.maxOvenTemp
-																	? `${meat.minOvenTemp}°`
-																	: `${meat.minOvenTemp}-${meat.maxOvenTemp}°`}
-															</p>
-														</>
-													)}
-												</Item>
-											))}
+												return (
+													<Item key={meat.name}>
+														{meatGroupIcon && <MeatGroupIcon src={meatGroupIcon} />}
+														<MeatName>{meat.name}</MeatName>
+														{meat.minInnerTemp && (
+															<>
+																<InfoText>
+																	<InfoIcon src={temperature} />
+																	{meat.minInnerTemp === meat.maxInnerTemp
+																		? `${meat.minInnerTemp}°`
+																		: `${meat.minInnerTemp}-${meat.maxInnerTemp}°`}
+																</InfoText>
+															</>
+														)}
+
+														{meat.minOvenTemp && (
+															<>
+																<InfoText>
+																	<InfoIcon src={oven} />
+																	{meat.minOvenTemp === meat.maxOvenTemp
+																		? `${meat.minOvenTemp}°`
+																		: `${meat.minOvenTemp}-${meat.maxOvenTemp}°`}
+																</InfoText>
+															</>
+														)}
+													</Item>
+												);
+											})}
 										</List>
 									)}
 								</>

@@ -32,7 +32,7 @@
 			"maxInnerTemp": 70,
 			"minOvenTemp": 100,
 			"maxOvenTemp": 175,
-			"meatGroup": ["Nötkött"]
+			"meatGroup": "Nötkött"
 		},
 		{
 			"name": "Entrecôte",
@@ -40,7 +40,7 @@
 			"maxInnerTemp": 70,
 			"minOvenTemp": 150,
 			"maxOvenTemp": 150,
-			"meatGroup": ["Nötkött"]
+			"meatGroup": "Nötkött"
 		},
 		{
 			"name": "Flankstek",
@@ -48,7 +48,7 @@
 			"maxInnerTemp": 70,
 			"minOvenTemp": 150,
 			"maxOvenTemp": 150,
-			"meatGroup": ["Nötkött"]
+			"meatGroup": "Nötkött"
 		},
 		{
 			"name": "Fransyska",
@@ -56,7 +56,7 @@
 			"maxInnerTemp": 75,
 			"minOvenTemp": 150,
 			"maxOvenTemp": 150,
-			"meatGroup": ["Nötkött"]
+			"meatGroup": "Nötkött"
 		},
 		{
 			"name": "Högrev",
@@ -64,7 +64,7 @@
 			"maxInnerTemp": 80,
 			"minOvenTemp": 75,
 			"maxOvenTemp": 125,
-			"meatGroup": ["Nötkött"]
+			"meatGroup": "Nötkött"
 		},
 		{
 			"name": "Nötbog",
@@ -72,7 +72,7 @@
 			"maxInnerTemp": 80,
 			"minOvenTemp": 125,
 			"maxOvenTemp": 175,
-			"meatGroup": ["Nötkött"]
+			"meatGroup": "Nötkött"
 		},
 		{
 			"name": "Nötbringa",
@@ -80,7 +80,7 @@
 			"maxInnerTemp": 90,
 			"minOvenTemp": 120,
 			"maxOvenTemp": 150,
-			"meatGroup": ["Nötkött"]
+			"meatGroup": "Nötkött"
 		},
 		{
 			"name": "Nötytterfilé",
@@ -88,7 +88,7 @@
 			"maxInnerTemp": 70,
 			"minOvenTemp": 125,
 			"maxOvenTemp": 175,
-			"meatGroup": ["Nötkött"]
+			"meatGroup": "Nötkött"
 		},
 		{
 			"name": "Oxfilé",
@@ -96,7 +96,7 @@
 			"maxInnerTemp": 70,
 			"minOvenTemp": 100,
 			"maxOvenTemp": 125,
-			"meatGroup": ["Nötkött"]
+			"meatGroup": "Nötkött"
 		},
 		{
 			"name": "Rostas",
@@ -104,7 +104,7 @@
 			"maxInnerTemp": 70,
 			"minOvenTemp": 100,
 			"maxOvenTemp": 125,
-			"meatGroup": ["Nötkött"]
+			"meatGroup": "Nötkött"
 		},
 		{
 			"name": "Rumpstek",
@@ -112,13 +112,13 @@
 			"maxInnerTemp": 70,
 			"minOvenTemp": 100,
 			"maxOvenTemp": 125,
-			"meatGroup": ["Nötkött"]
+			"meatGroup": "Nötkött"
 		},
 		{
 			"name": "Ungnötslever",
 			"minInnerTemp": 60,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Nötkött"]
+			"meatGroup": "Nötkött"
 		},
 		{
 			"name": "Ytterlår",
@@ -126,7 +126,7 @@
 			"maxInnerTemp": 85,
 			"minOvenTemp": 125,
 			"maxOvenTemp": 175,
-			"meatGroup": ["Nötkött"]
+			"meatGroup": "Nötkött"
 		},
 		{
 			"name": "Märgpipa",
@@ -134,7 +134,7 @@
 			"maxInnerTemp": 80,
 			"minOvenTemp": 125,
 			"maxOvenTemp": 175,
-			"meatGroup": ["Nötkött"]
+			"meatGroup": "Nötkött"
 		},
 		{
 			"name": "Nötfärs",
@@ -142,7 +142,7 @@
 			"maxInnerTemp": 70,
 			"minOvenTemp": 175,
 			"maxOvenTemp": 200,
-			"meatGroup": ["Nötkött"]
+			"meatGroup": "Nötkött"
 		},
 		{
 			"name": "Rostbiff",
@@ -150,7 +150,7 @@
 			"maxInnerTemp": 70,
 			"minOvenTemp": 125,
 			"maxOvenTemp": 175,
-			"meatGroup": ["Nötkött"]
+			"meatGroup": "Nötkött"
 		},
 		{
 			"name": "Ryggbiff",
@@ -158,37 +158,37 @@
 			"maxInnerTemp": 70,
 			"minOvenTemp": 125,
 			"maxOvenTemp": 175,
-			"meatGroup": ["Nötkött"]
+			"meatGroup": "Nötkött"
 		},
 		{
 			"name": "Lammentrecôte",
 			"minInnerTemp": 58,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Lamm"]
+			"meatGroup": "Lamm"
 		},
 		{
 			"name": "Lammfilé",
 			"minInnerTemp": 58,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Lamm"]
+			"meatGroup": "Lamm"
 		},
 		{
 			"name": "Lammfärs",
 			"minInnerTemp": 70,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Lamm"]
+			"meatGroup": "Lamm"
 		},
 		{
 			"name": "Lammkotlett",
 			"minInnerTemp": 58,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Lamm"]
+			"meatGroup": "Lamm"
 		},
 		{
 			"name": "Lammracks",
 			"minInnerTemp": 58,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Lamm"]
+			"meatGroup": "Lamm"
 		},
 		{
 			"name": "Lammstek",
@@ -196,37 +196,37 @@
 			"maxInnerTemp": 70,
 			"minOvenTemp": 150,
 			"maxOvenTemp": 150,
-			"meatGroup": ["Lamm"]
+			"meatGroup": "Lamm"
 		},
 		{
 			"name": "Lammytterfilé",
 			"minInnerTemp": 58,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Lamm"]
+			"meatGroup": "Lamm"
 		},
 		{
 			"name": "Lammrostbiff",
 			"minInnerTemp": 58,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Lamm"]
+			"meatGroup": "Lamm"
 		},
 		{
 			"name": "Kalventrecôte",
 			"minInnerTemp": 60,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Kalv"]
+			"meatGroup": "Kalv"
 		},
 		{
 			"name": "Kalvfilé",
 			"minInnerTemp": 60,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Kalv"]
+			"meatGroup": "Kalv"
 		},
 		{
 			"name": "Kalvfärs",
 			"minInnerTemp": 70,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Kalv"]
+			"meatGroup": "Kalv"
 		},
 		{
 			"name": "Kalvstek",
@@ -234,49 +234,49 @@
 			"maxInnerTemp": 65,
 			"minOvenTemp": 150,
 			"maxOvenTemp": 150,
-			"meatGroup": ["Kalv"]
+			"meatGroup": "Kalv"
 		},
 		{
 			"name": "Kalvytterfilé",
 			"minInnerTemp": 60,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Kalv"]
+			"meatGroup": "Kalv"
 		},
 		{
 			"name": "Benfri fläskkotlett",
 			"minInnerTemp": 70,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Fläsk"]
+			"meatGroup": "Fläsk"
 		},
 		{
 			"name": "Benfri fläskkotlettrad",
 			"minInnerTemp": 70,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Fläsk"]
+			"meatGroup": "Fläsk"
 		},
 		{
 			"name": "Flintastek",
 			"minInnerTemp": 70,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Fläsk"]
+			"meatGroup": "Fläsk"
 		},
 		{
 			"name": "Fläskbog",
 			"minInnerTemp": 70,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Fläsk"]
+			"meatGroup": "Fläsk"
 		},
 		{
 			"name": "Fläskfilé",
 			"minInnerTemp": 70,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Fläsk"]
+			"meatGroup": "Fläsk"
 		},
 		{
 			"name": "Fläskfärs",
 			"minInnerTemp": 70,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Fläsk"]
+			"meatGroup": "Fläsk"
 		},
 		{
 			"name": "Fläskkarré",
@@ -284,31 +284,31 @@
 			"maxInnerTemp": 85,
 			"minOvenTemp": 150,
 			"maxOvenTemp": 150,
-			"meatGroup": ["Fläsk"]
+			"meatGroup": "Fläsk"
 		},
 		{
 			"name": "Fläskytterfilé",
 			"minInnerTemp": 70,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Fläsk"]
+			"meatGroup": "Fläsk"
 		},
 		{
 			"name": "Grillspjut",
 			"minInnerTemp": 70,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Fläsk"]
+			"meatGroup": "Fläsk"
 		},
 		{
 			"name": "Julskinka",
 			"minInnerTemp": 72,
 			"maxInnerTemp": 72,
-			"meatGroup": ["Fläsk"]
+			"meatGroup": "Fläsk"
 		},
 		{
 			"name": "Fläskkotlett",
 			"minInnerTemp": 70,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Fläsk"]
+			"meatGroup": "Fläsk"
 		},
 		{
 			"name": "Kotlettrad",
@@ -316,13 +316,13 @@
 			"maxInnerTemp": 72,
 			"minOvenTemp": 150,
 			"maxOvenTemp": 150,
-			"meatGroup": ["Fläsk"]
+			"meatGroup": "Fläsk"
 		},
 		{
 			"name": "Skinka",
 			"minInnerTemp": 70,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Fläsk"]
+			"meatGroup": "Fläsk"
 		},
 		{
 			"name": "Skinkstek",
@@ -330,199 +330,199 @@
 			"maxInnerTemp": 70,
 			"minOvenTemp": 150,
 			"maxOvenTemp": 150,
-			"meatGroup": ["Fläsk"]
+			"meatGroup": "Fläsk"
 		},
 		{
 			"name": "Sidfläsk",
 			"minInnerTemp": 80,
 			"maxInnerTemp": 80,
-			"meatGroup": ["Fläsk"]
+			"meatGroup": "Fläsk"
 		},
 		{
 			"name": "Köttfärslimpa (blandfärs)",
 			"minInnerTemp": 70,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Fläsk"]
+			"meatGroup": "Fläsk"
 		},
 		{
 			"name": "Renstek",
 			"minInnerTemp": 58,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Vilt"]
+			"meatGroup": "Vilt"
 		},
 		{
 			"name": "Hjortfile",
 			"minInnerTemp": 58,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Vilt"]
+			"meatGroup": "Vilt"
 		},
 		{
 			"name": "Hjortstek",
 			"minInnerTemp": 65,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Vilt"]
+			"meatGroup": "Vilt"
 		},
 		{
 			"name": "Rådjurssadel",
 			"minInnerTemp": 60,
 			"maxInnerTemp": 65,
-			"meatGroup": ["Vilt"]
+			"meatGroup": "Vilt"
 		},
 		{
 			"name": "Rådjursstek",
 			"minInnerTemp": 60,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Vilt"]
+			"meatGroup": "Vilt"
 		},
 		{
 			"name": "Vildsvin",
 			"minInnerTemp": 72,
 			"maxInnerTemp": 72,
-			"meatGroup": ["Vilt"]
+			"meatGroup": "Vilt"
 		},
 		{
 			"name": "Vildsvinsstek",
 			"minInnerTemp": 72,
 			"maxInnerTemp": 72,
-			"meatGroup": ["Vilt"]
+			"meatGroup": "Vilt"
 		},
 		{
 			"name": "Älgfilé, kalv",
 			"minInnerTemp": 65,
 			"maxInnerTemp": 65,
-			"meatGroup": ["Vilt"]
+			"meatGroup": "Vilt"
 		},
 		{
 			"name": "Älgkött kalv, biff",
 			"minInnerTemp": 60,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Vilt"]
+			"meatGroup": "Vilt"
 		},
 		{
 			"name": "Älgfilé",
 			"minInnerTemp": 58,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Vilt"]
+			"meatGroup": "Vilt"
 		},
 		{
 			"name": "Älgstek, fransyska",
 			"minInnerTemp": 70,
 			"maxInnerTemp": 75,
-			"meatGroup": ["Vilt"]
+			"meatGroup": "Vilt"
 		},
 		{
 			"name": "Älgkött kalv, entrecôte",
 			"minInnerTemp": 60,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Vilt"]
+			"meatGroup": "Vilt"
 		},
 		{
 			"name": "Älgkött, biff",
 			"minInnerTemp": 58,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Vilt"]
+			"meatGroup": "Vilt"
 		},
 		{
 			"name": "Älgkött, entrecôte",
 			"minInnerTemp": 58,
 			"maxInnerTemp": 70,
-			"meatGroup": ["Vilt"]
+			"meatGroup": "Vilt"
 		},
 		{
 			"name": "Hel kyckling",
 			"minInnerTemp": 82,
 			"maxInnerTemp": 82,
-			"meatGroup": ["Kyckling", "Kalkon"]
+			"meatGroup": "Kyckling"
 		},
 		{
 			"name": "Kycklingfilé",
 			"minInnerTemp": 72,
 			"maxInnerTemp": 72,
-			"meatGroup": ["Kyckling", "Kalkon"]
+			"meatGroup": "Kyckling"
 		},
 		{
 			"name": "Kycklingklubba",
 			"minInnerTemp": 82,
 			"maxInnerTemp": 82,
-			"meatGroup": ["Kyckling", "Kalkon"]
+			"meatGroup": "Kyckling"
 		},
 		{
 			"name": "Kycklinglår",
 			"minInnerTemp": 82,
 			"maxInnerTemp": 82,
-			"meatGroup": ["Kyckling", "Kalkon"]
+			"meatGroup": "Kyckling"
 		},
 		{
 			"name": "Kycklinglårfilé",
 			"minInnerTemp": 72,
 			"maxInnerTemp": 72,
-			"meatGroup": ["Kyckling", "Kalkon"]
+			"meatGroup": "Kyckling"
 		},
 		{
 			"name": "Kycklingspett med lårfilébitar",
 			"minInnerTemp": 72,
 			"maxInnerTemp": 72,
-			"meatGroup": ["Kyckling", "Kalkon"]
+			"meatGroup": "Kyckling"
 		},
 		{
 			"name": "Kycklingvingar",
 			"minInnerTemp": 82,
 			"maxInnerTemp": 82,
-			"meatGroup": ["Kyckling", "Kalkon"]
+			"meatGroup": "Kyckling"
 		},
 		{
 			"name": "Kalkon",
 			"minInnerTemp": 72,
 			"maxInnerTemp": 72,
-			"meatGroup": ["Kyckling", "Kalkon"]
+			"meatGroup": "Kalkon"
 		},
 		{
 			"name": "Kalkonbröst",
 			"minInnerTemp": 72,
 			"maxInnerTemp": 72,
-			"meatGroup": ["Kyckling", "Kalkon"]
+			"meatGroup": "Kalkon"
 		},
 		{
 			"name": "Kalkonfilé",
 			"minInnerTemp": 72,
 			"maxInnerTemp": 72,
-			"meatGroup": ["Kyckling", "Kalkon"]
+			"meatGroup": "Kalkon"
 		},
 		{
 			"name": "Hel fisk",
 			"minInnerTemp": 56,
 			"maxInnerTemp": 56,
-			"meatGroup": ["Fisk"]
+			"meatGroup": "Fisk"
 		},
 		{
 			"name": "Lax",
 			"minInnerTemp": 56,
 			"maxInnerTemp": 56,
-			"meatGroup": ["Fisk"]
+			"meatGroup": "Fisk"
 		},
 		{
 			"name": "Tonfisk albacore",
 			"minInnerTemp": 32,
 			"maxInnerTemp": 32,
-			"meatGroup": ["Fisk"]
+			"meatGroup": "Fisk"
 		},
 		{
 			"name": "Torsk",
 			"minInnerTemp": 56,
 			"maxInnerTemp": 56,
-			"meatGroup": ["Fisk"]
+			"meatGroup": "Fisk"
 		},
 		{
 			"name": "Torskrygg",
 			"minInnerTemp": 56,
 			"maxInnerTemp": 56,
-			"meatGroup": ["Fisk"]
+			"meatGroup": "Fisk"
 		},
 		{
 			"name": "Hälleflundra",
 			"minInnerTemp": 56,
 			"maxInnerTemp": 56,
-			"meatGroup": ["Fisk"]
+			"meatGroup": "Fisk"
 		}
 	]
 }
