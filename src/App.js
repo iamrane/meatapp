@@ -24,7 +24,17 @@ const GlobalStyles = createGlobalStyle`
 	}
 	body {
 		box-sizing: border-box;
-		background: url(${background}) no-repeat center center fixed; 
+
+		&:after {
+			content: '';
+			position: fixed;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background: url(${background}) repeat center center;
+			z-index: -1;
+		}
 	}
 	*, *:after, *:before {
 		box-sizing: inherit;
@@ -88,7 +98,7 @@ const Logo = styled.img`
 	display: block;
 	width: ${props => (props.isSearching ? 100 : 200)}px;
 	margin: auto;
-	transition: all 0.2s ease;
+	transition: width 0.2s ease;
 `;
 
 const Tips = styled.div`
@@ -164,108 +174,120 @@ function getMeatGroupIcon(meatGroup) {
 
 function App() {
 	return (
-		<Formik
-			onSubmit={console.log}
-			initialValues={{
-				search: '',
-			}}
-		>
-			{({ values, handleChange, handleBlur, setFieldValue }) => {
-				const filterName = data.meats.filter(meat =>
-					meat.name.toLowerCase().includes(values.search.toLowerCase())
-				);
-				const filterTags = data.meats.filter(meat =>
-					meat.meatGroup.toLowerCase().includes(values.search.toLowerCase())
-				);
-				const result = uniqBy([...filterName, ...filterTags], 'name');
+		<>
+			<GlobalStyles />
 
-				const handleClick = text => evt => {
-					evt.preventDefault();
-					setFieldValue('search', text);
-				};
+			<Formik
+				initialValues={{
+					search: '',
+				}}
+			>
+				{({ values, handleChange, handleBlur, setFieldValue }) => {
+					const filterName = data.meats.filter(meat =>
+						meat.name.toLowerCase().includes(values.search.toLowerCase())
+					);
+					const filterTags = data.meats.filter(meat =>
+						meat.meatGroup.toLowerCase().includes(values.search.toLowerCase())
+					);
+					const result = uniqBy([...filterName, ...filterTags], 'name');
 
-				return (
-					<Container isSearching={!!values.search}>
-						<GlobalStyles />
-						<Form>
-							<Logo src={logoImg} isSearching={!!values.search} />
-							<SearchFieldWrapper>
-								<SearchField
-									name="search"
-									onChange={handleChange}
-									onBlur={handleBlur}
-									value={values.search}
-									placeholder="Vilket kött undrar du över?"
-									autoComplete="off"
-								/>
-								{values.search && <CloseIcon onClick={handleClick('')} />}
-							</SearchFieldWrapper>
+					const handleClick = text => evt => {
+						evt.preventDefault();
+						setFieldValue('search', text);
+					};
 
-							{!values.search ? (
-								<>
-									<Tips key="meatGroup">
-										<TipsButton onClick={handleClick('Nöt')}>Nöt</TipsButton>,{' '}
-										<TipsButton onClick={handleClick('Fläsk')}>Fläsk</TipsButton>,{' '}
-										<TipsButton onClick={handleClick('Vilt')}>Vilt</TipsButton>,{' '}
-										<TipsButton onClick={handleClick('Kyckling')}>Kyckling</TipsButton>,{' '}
-										<TipsButton onClick={handleClick('Fisk')}>Fisk</TipsButton>
-									</Tips>
-									<Tips key="meatNames">
-										<TipsButton onClick={handleClick('Märgpipa')}>Märgpipa</TipsButton>,{' '}
-										<TipsButton onClick={handleClick('Sidfläsk')}>Sidfläsk</TipsButton>,{' '}
-										<TipsButton onClick={handleClick('Älgfilé')}>Älgfilé</TipsButton>,{' '}
-										<TipsButton onClick={handleClick('Kycklingvingar')}>Kycklingvingar</TipsButton>,{' '}
-										<TipsButton onClick={handleClick('Tonfisk albacore')}>
-											Tonfisk albacore
-										</TipsButton>
-									</Tips>
-								</>
-							) : (
-								<>
-									{isEmpty(result) ? (
-										<NoResult>Hittade inte köttbiten du letade efter :(</NoResult>
-									) : (
-										<List>
-											{result.map(meat => {
-												const meatGroupIcon = getMeatGroupIcon(meat.meatGroup);
+					return (
+						<Container isSearching={!!values.search}>
+							<Form>
+								<Logo src={logoImg} isSearching={!!values.search} />
+								<SearchFieldWrapper>
+									<SearchField
+										name="search"
+										onChange={evt => {
+											handleChange(evt);
+											window.scrollTo(0, 0);
+										}}
+										onBlur={handleBlur}
+										value={values.search}
+										placeholder="Vilket kött undrar du över?"
+										autoComplete="off"
+									/>
+									{values.search && <CloseIcon onClick={handleClick('')} />}
+								</SearchFieldWrapper>
 
-												return (
-													<Item key={meat.name}>
-														{meatGroupIcon && <MeatGroupIcon src={meatGroupIcon} />}
-														<MeatName>{meat.name}</MeatName>
-														{meat.minInnerTemp && (
-															<>
-																<InfoText>
-																	<InfoIcon src={temperature} />
-																	{meat.minInnerTemp === meat.maxInnerTemp
-																		? `${meat.minInnerTemp}°`
-																		: `${meat.minInnerTemp}-${meat.maxInnerTemp}°`}
-																</InfoText>
-															</>
-														)}
+								{!values.search ? (
+									<>
+										<Tips key="meatGroup">
+											<TipsButton onClick={handleClick('Nöt')}>Nöt</TipsButton>,{' '}
+											<TipsButton onClick={handleClick('Fläsk')}>Fläsk</TipsButton>,{' '}
+											<TipsButton onClick={handleClick('Vilt')}>Vilt</TipsButton>,{' '}
+											<TipsButton onClick={handleClick('Kyckling')}>Kyckling</TipsButton>,{' '}
+											<TipsButton onClick={handleClick('Fisk')}>Fisk</TipsButton>
+										</Tips>
+										<Tips key="meatNames">
+											<TipsButton onClick={handleClick('Märgpipa')}>Märgpipa</TipsButton>,{' '}
+											<TipsButton onClick={handleClick('Sidfläsk')}>Sidfläsk</TipsButton>,{' '}
+											<TipsButton onClick={handleClick('Älgfilé')}>Älgfilé</TipsButton>,{' '}
+											<TipsButton onClick={handleClick('Kycklingvingar')}>
+												Kycklingvingar
+											</TipsButton>
+											,{' '}
+											<TipsButton onClick={handleClick('Tonfisk albacore')}>
+												Tonfisk albacore
+											</TipsButton>
+										</Tips>
+									</>
+								) : (
+									<>
+										{isEmpty(result) ? (
+											<NoResult>Hittade inte köttbiten du letade efter :(</NoResult>
+										) : (
+											<List>
+												{result.map(meat => {
+													const meatGroupIcon = getMeatGroupIcon(meat.meatGroup);
 
-														{meat.minOvenTemp && (
-															<>
-																<InfoText>
-																	<InfoIcon src={oven} />
-																	{meat.minOvenTemp === meat.maxOvenTemp
-																		? `${meat.minOvenTemp}°`
-																		: `${meat.minOvenTemp}-${meat.maxOvenTemp}°`}
-																</InfoText>
-															</>
-														)}
-													</Item>
-												);
-											})}
-										</List>
-									)}
-								</>
-							)}
-						</Form>
-					</Container>
-				);
-			}}
-		</Formik>
+													return (
+														<Item key={meat.name}>
+															{meatGroupIcon && <MeatGroupIcon src={meatGroupIcon} />}
+															<MeatName>{meat.name}</MeatName>
+															{meat.minInnerTemp && (
+																<>
+																	<InfoText>
+																		<InfoIcon src={temperature} />
+																		{meat.minInnerTemp === meat.maxInnerTemp
+																			? `${meat.minInnerTemp}°`
+																			: `${meat.minInnerTemp}-${
+																					meat.maxInnerTemp
+																			  }°`}
+																	</InfoText>
+																</>
+															)}
+
+															{meat.minOvenTemp && (
+																<>
+																	<InfoText>
+																		<InfoIcon src={oven} />
+																		{meat.minOvenTemp === meat.maxOvenTemp
+																			? `${meat.minOvenTemp}°`
+																			: `${meat.minOvenTemp}-${
+																					meat.maxOvenTemp
+																			  }°`}
+																	</InfoText>
+																</>
+															)}
+														</Item>
+													);
+												})}
+											</List>
+										)}
+									</>
+								)}
+							</Form>
+						</Container>
+					);
+				}}
+			</Formik>
+		</>
 	);
 }
 
