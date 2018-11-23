@@ -25,7 +25,7 @@
 			"text": "Bästa sättet att tillaga kött upp till 70˚C är att bryna, krydda och steka klart det i ugnen på låg värme, 100–125˚C. Då behåller köttet sin saftighet. När du steker i låg ugnstemperatur blir efterstekningen minimal. I hög temperatur däremot kan innertemperaturen stiga tre till fyra grader efter att du tagit ut köttet. Låt det vila inlindat i fuktat smörpapper en kvart innan det skärs upp."
 		}
 	],
-	"meats": [
+	"allMeats": [
 		{
 			"name": "Biff",
 			"minInnerTemp": 55,
