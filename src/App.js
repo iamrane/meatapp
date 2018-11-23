@@ -201,7 +201,7 @@ function App() {
 		<>
 			<GlobalStyles />
 			<Query query={GET_MEATS}>
-				{({ loading, error data }) => {
+				{({ loading, error, data }) => {
 					// const data = { ...mock };
 					return (
 						<Formik
