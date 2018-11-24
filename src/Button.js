@@ -8,7 +8,7 @@ const ButtonElement = styled.button`
 	border: 0;
 	padding: 0.5rem 1rem;
 	border: 0.25rem solid rgba(255, 255, 255, 0.5);
-	background: transparent;
+	background: rgba(255, 255, 255, 0);
 	transition: border-color 0.2s ease-in-out;
 	color: #fff;
 	cursor: pointer;

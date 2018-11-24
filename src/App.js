@@ -90,15 +90,24 @@ const SearchFieldWrapper = styled.div`
 	position: relative;
 	padding: 1rem 0;
 `;
-const SearchField = styled.input`
+const LabelContainer = styled.div`
+	grid-column: 1 / 3;
+`;
+const Label = styled.label`
+	font-weight: bold;
+	display: block;
+	color: #fff;
+`;
+
+const Field = styled.input`
 	width: 100%;
 	border: none;
-	border-radius: 1rem;
+	border-radius: 0;
 	margin: 0;
-	font-size: 1.17rem;
+	font-size: ${props => (props.small ? '0.785rem' : '1.17rem')};
 	padding: 0.75rem 1rem;
 	outline: none;
-	text-align: center;
+	text-align: ${props => (props.small ? 'left' : 'center')};
 `;
 const CloseIcon = styled.div`
 	position: absolute;
@@ -112,6 +121,16 @@ const CloseIcon = styled.div`
 `;
 const NoResult = styled.p`
 	color: white;
+`;
+const NewMeatContainer = styled.div`
+	display: grid;
+	grid-template-rows: auto;
+	grid-gap: 1rem;
+`;
+const NewMeatRow = styled.div`
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 0.5rem;
 `;
 const Logo = styled.img`
 	display: block;
@@ -139,7 +158,7 @@ const MeatGroupIcon = styled.img`
 `;
 
 const MeatName = styled.h3`
-	margin: 0;
+	margin: 0 0 1rem;
 	font-size: 1.17rem;
 `;
 
@@ -203,19 +222,29 @@ function App() {
 			<Query query={GET_MEATS}>
 				{({ loading, error, data }) => {
 					// const data = { ...mock };
+					if (isEmpty(data)) {
+						return null;
+					}
+
 					return (
 						<Formik
 							initialValues={{
 								search: '',
+								minInnerTemp: '',
+								maxInnerTemp: '',
+								minOvenTemp: '',
+								maxOvenTemp: '',
 							}}
 						>
 							{({ values, handleChange, handleBlur, setFieldValue }) => {
 								const filterName = data.allMeats.filter(meat =>
 									meat.name.toLowerCase().includes(values.search.toLowerCase())
 								);
+
 								const filterTags = data.allMeats.filter(meat =>
 									meat.meatGroup.toLowerCase().includes(values.search.toLowerCase())
 								);
+
 								const result = uniqBy([...filterName, ...filterTags], 'name');
 
 								const handleClick = text => evt => {
@@ -228,7 +257,7 @@ function App() {
 										<Form>
 											<Logo src={logoImg} isSearching={!!values.search} />
 											<SearchFieldWrapper>
-												<SearchField
+												<Field
 													name="search"
 													onChange={evt => {
 														handleChange(evt);
@@ -278,7 +307,61 @@ function App() {
 											) : (
 												<>
 													{isEmpty(result) ? (
-														<NoResult>Hittade inte köttbiten du letade efter :(</NoResult>
+														<>
+															<NoResult>
+																Hittade inte köttbiten du letade efter :( Men lägg gärna
+																in informationen nedan.
+															</NoResult>
+															<NewMeatContainer>
+																<NewMeatRow>
+																	<LabelContainer>
+																		<Label>Innertemp</Label>
+																	</LabelContainer>
+																	<Field
+																		name="minInnerTemp"
+																		onChange={handleChange}
+																		onBlur={handleBlur}
+																		value={values.minInnerTemp}
+																		placeholder="Min"
+																		autoComplete="off"
+																		small
+																	/>
+																	<Field
+																		name="maxInnerTemp"
+																		onChange={handleChange}
+																		onBlur={handleBlur}
+																		value={values.maxInnerTemp}
+																		placeholder="Max"
+																		autoComplete="off"
+																		small
+																	/>
+																</NewMeatRow>
+																<NewMeatRow>
+																	<LabelContainer>
+																		<Label>Ungstemperatur</Label>
+																	</LabelContainer>
+																	<Field
+																		name="minOvenTemp"
+																		onChange={handleChange}
+																		onBlur={handleBlur}
+																		value={values.minOvenTemp}
+																		placeholder="Min"
+																		autoComplete="off"
+																		small
+																	/>
+																	<Field
+																		name="maxOvenTemp"
+																		onChange={handleChange}
+																		onBlur={handleBlur}
+																		value={values.maxOvenTemp}
+																		placeholder="Max"
+																		autoComplete="off"
+																		small
+																	/>
+																</NewMeatRow>
+																<Button type="submit">Lägg till informationen</Button>
+															</NewMeatContainer>
+														</>
 													) : (
 														<List>
 															{result.map(meat => {
@@ -291,31 +374,25 @@ function App() {
 																		)}
 																		<MeatName>{meat.name}</MeatName>
 																		{meat.minInnerTemp && (
-																			<>
-																				<InfoText>
-																					<InfoIcon src={temperature} />
-																					{meat.minInnerTemp ===
-																					meat.maxInnerTemp
-																						? `${meat.minInnerTemp}°`
-																						: `${meat.minInnerTemp}-${
-																								meat.maxInnerTemp
-																						  }°`}
-																				</InfoText>
-																			</>
+																			<InfoText>
+																				<InfoIcon src={temperature} />
+																				{meat.minInnerTemp === meat.maxInnerTemp
+																					? `${meat.minInnerTemp}°`
+																					: `${meat.minInnerTemp}-${
+																							meat.maxInnerTemp
+																					  }°`}
+																			</InfoText>
 																		)}
 
 																		{meat.minOvenTemp && (
-																			<>
-																				<InfoText>
-																					<InfoIcon src={oven} />
-																					{meat.minOvenTemp ===
-																					meat.maxOvenTemp
-																						? `${meat.minOvenTemp}°`
-																						: `${meat.minOvenTemp}-${
-																								meat.maxOvenTemp
-																						  }°`}
-																				</InfoText>
-																			</>
+																			<InfoText>
+																				<InfoIcon src={oven} />
+																				{meat.minOvenTemp === meat.maxOvenTemp
+																					? `${meat.minOvenTemp}°`
+																					: `${meat.minOvenTemp}-${
+																							meat.maxOvenTemp
+																					  }°`}
+																			</InfoText>
 																		)}
 																		<ButtonContainer>
 																			<Button>Mer info</Button>
