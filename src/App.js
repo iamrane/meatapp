@@ -67,7 +67,7 @@ const Container = styled.div`
 
 	${props =>
 		props.isSearching
-			? 'top: 0'
+			? 'top: 3rem'
 			: `
 				top: 50%;
 				transform: translateY(-50%);
