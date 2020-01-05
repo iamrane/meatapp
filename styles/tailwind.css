@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	@apply bg-teal-400 p-2;
+}
+
+@screen sm {
+	body {
+		@apply p-4;
+	}
+}
