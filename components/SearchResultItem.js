@@ -95,22 +95,30 @@ const SearchResultItem = props => {
 				</div>
 			)}
 
-			{open && (
+			{open && (!!marbling || !!tenderness) && (
 				<div className="mx-5 my-6 overflow-hidden">
-					<div className="inline-block w-24 mr-4">
-						<div className="relative">
-							<Gauge percent={marbling} />
-							<span className="absolute inset-0 flex items-center justify-center">25%</span>
+					{!!marbling && (
+						<div className="inline-block w-24 mr-4">
+							<div className="relative">
+								<Gauge percent={marbling} />
+								<span className="absolute inset-0 flex items-center justify-center">
+									{marbling + '%'}
+								</span>
+							</div>
+							<div className="my-1 text-center">Marbling</div>
 						</div>
-						<div className="my-1 text-center">Marbling</div>
-					</div>
-					<div className="inline-block w-24">
-						<div className="relative">
-							<Gauge percent={tenderness} />
-							<span className="absolute inset-0 flex items-center justify-center">50%</span>
+					)}
+					{!!tenderness && (
+						<div className="inline-block w-24">
+							<div className="relative">
+								<Gauge percent={tenderness} />
+								<span className="absolute inset-0 flex items-center justify-center">
+									{tenderness + '%'}
+								</span>
+							</div>
+							<div className="my-1 text-center">Tenderness</div>
 						</div>
-						<div className="my-1 text-center">Tenderness</div>
-					</div>
+					)}
 				</div>
 			)}
 

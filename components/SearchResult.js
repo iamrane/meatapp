@@ -24,6 +24,7 @@ const SearchResult = props => {
 		return null;
 	}
 
+	const { allMeats = [] } = data;
 	const filterName = data.allMeats.filter(meat => meat.meatName.toLowerCase().includes(meatName.toLowerCase()));
 	const filterTags = data.allMeats.filter(meat => meat.meatGroup.toLowerCase().includes(meatName.toLowerCase()));
 	const result = uniqBy([...filterName, ...filterTags], 'meatName');

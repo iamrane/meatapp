@@ -444,6 +444,8 @@ var SearchResult = function SearchResult(props) {
     return null;
   }
 
+  var _data$allMeats = data.allMeats,
+      allMeats = _data$allMeats === void 0 ? [] : _data$allMeats;
   var filterName = data.allMeats.filter(function (meat) {
     return meat.meatName.toLowerCase().includes(meatName.toLowerCase());
   });
@@ -462,7 +464,7 @@ var SearchResult = function SearchResult(props) {
     animate: "reveal",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 37
     },
     __self: this
   }, result.map(function (meat) {
@@ -471,7 +473,7 @@ var SearchResult = function SearchResult(props) {
     }, meat, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 38
+        lineNumber: 39
       },
       __self: this
     }));
@@ -715,88 +717,88 @@ var SearchResultItem = function SearchResultItem(props) {
       lineNumber: 94
     },
     __self: this
-  }, grill)), open && __jsx("div", {
+  }, grill)), open && (!!marbling || !!tenderness) && __jsx("div", {
     className: "mx-5 my-6 overflow-hidden",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 99
     },
     __self: this
-  }, __jsx("div", {
+  }, !!marbling && __jsx("div", {
     className: "inline-block w-24 mr-4",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100
+      lineNumber: 101
     },
     __self: this
   }, __jsx("div", {
     className: "relative",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 101
+      lineNumber: 102
     },
     __self: this
   }, __jsx(components_Gauge__WEBPACK_IMPORTED_MODULE_3__["default"], {
     percent: marbling,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 102
+      lineNumber: 103
     },
     __self: this
   }), __jsx("span", {
     className: "absolute inset-0 flex items-center justify-center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 103
+      lineNumber: 104
     },
     __self: this
-  }, "25%")), __jsx("div", {
+  }, marbling + '%')), __jsx("div", {
     className: "my-1 text-center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 105
+      lineNumber: 108
     },
     __self: this
-  }, "Marbling")), __jsx("div", {
+  }, "Marbling")), !!tenderness && __jsx("div", {
     className: "inline-block w-24",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 107
+      lineNumber: 112
     },
     __self: this
   }, __jsx("div", {
     className: "relative",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 108
+      lineNumber: 113
     },
     __self: this
   }, __jsx(components_Gauge__WEBPACK_IMPORTED_MODULE_3__["default"], {
     percent: tenderness,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 109
+      lineNumber: 114
     },
     __self: this
   }), __jsx("span", {
     className: "absolute inset-0 flex items-center justify-center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110
+      lineNumber: 115
     },
     __self: this
-  }, "50%")), __jsx("div", {
+  }, tenderness + '%')), __jsx("div", {
     className: "my-1 text-center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 112
+      lineNumber: 119
     },
     __self: this
   }, "Tenderness"))), __jsx("div", {
     className: "mx-5 my-4",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 117
+      lineNumber: 125
     },
     __self: this
   }, __jsx(framer_motion__WEBPACK_IMPORTED_MODULE_1__["motion"].span, {
@@ -806,7 +808,7 @@ var SearchResultItem = function SearchResultItem(props) {
     className: "cursor-pointer inline-block hover:bg-teal-200 rounded-full px-3 py-1 text-sm font-semibold text-teal-700 hover:text-teal-900",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 118
+      lineNumber: 126
     },
     __self: this
   }, "#photography"), __jsx(framer_motion__WEBPACK_IMPORTED_MODULE_1__["motion"].span, {
@@ -816,7 +818,7 @@ var SearchResultItem = function SearchResultItem(props) {
     className: "cursor-pointer inline-block hover:bg-teal-200 rounded-full px-3 py-1 text-sm font-semibold text-teal-700 hover:text-teal-900",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 124
+      lineNumber: 132
     },
     __self: this
   }, "#travel"), __jsx(framer_motion__WEBPACK_IMPORTED_MODULE_1__["motion"].span, {
@@ -826,7 +828,7 @@ var SearchResultItem = function SearchResultItem(props) {
     className: "cursor-pointer inline-block hover:bg-teal-200 rounded-full px-3 py-1 text-sm font-semibold text-teal-700 hover:text-teal-900",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 130
+      lineNumber: 138
     },
     __self: this
   }, "#winter")));
@@ -9194,7 +9196,7 @@ function useFormik(_ref) {
         resolve(emptyErrors);
       }, function (err) {
         // Yup will throw a validation error if validation fails. We catch those and
-        // resolve them into Formik errors. We can sniff is something is a Yup error
+        // resolve them into Formik errors. We can sniff if something is a Yup error
         // by checking error.name.
         // @see https://github.com/jquense/yup#validationerrorerrors-string--arraystring-value-any-path-string
         if (err.name === 'ValidationError') {
@@ -9961,26 +9963,38 @@ function getSelectedValues(options) {
 
 
 function getValueForCheckbox(currentValue, checked, valueProp) {
-  // eslint-disable-next-line eqeqeq
-  if (valueProp == 'true' || valueProp == 'false') {
-    return !!checked;
-  }
+  // If the current value was a boolean, return a boolean
+  if (typeof currentValue === 'boolean') {
+    return Boolean(checked);
+  } // If the currentValue was not a boolean we want to return an array
 
-  if (checked && valueProp) {
-    return Array.isArray(currentValue) ? currentValue.concat(valueProp) : [valueProp];
-  }
+
+  var currentArrayOfValues = [];
 
   if (!Array.isArray(currentValue)) {
-    return !currentValue;
+    // eslint-disable-next-line eqeqeq
+    if (valueProp == 'true' || valueProp == 'false') {
+      return !!checked;
+    }
+  } else {
+    // If the current value is already an array, use it
+    currentArrayOfValues = currentValue;
   }
 
   var index = currentValue.indexOf(valueProp);
+  var isValueInArray = index >= 0; // If the checkbox was checked and the value is not already present in the aray we want to add the new value to the array of values
 
-  if (index < 0) {
-    return currentValue;
-  }
+  if (checked && valueProp && !isValueInArray) {
+    return currentArrayOfValues.concat(valueProp);
+  } // If the checkbox was unchecked and the value is not in the array, simply return the already existing array of values
 
-  return currentValue.slice(0, index).concat(currentValue.slice(index + 1));
+
+  if (!isValueInArray) {
+    return currentArrayOfValues;
+  } // If the checkbox was unchecked and the value is in the array, remove the value and return the array
+
+
+  return currentArrayOfValues.slice(0, index).concat(currentArrayOfValues.slice(index + 1));
 } // React currently throws a warning when using useLayoutEffect on the server.
 // To get around it, we can conditionally useEffect on the server (no-op) and
 // useLayoutEffect in the browser.
@@ -10474,7 +10488,7 @@ function (_React$Component) {
 
   _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
     if (!react_fast_compare__WEBPACK_IMPORTED_MODULE_1___default()(getIn(prevProps.formik.values, prevProps.name), getIn(this.props.formik.values, this.props.name)) && this.props.formik.validateOnChange) {
-      this.props.formik.validateForm();
+      this.props.formik.validateForm(this.props.formik.values);
     }
   };
 

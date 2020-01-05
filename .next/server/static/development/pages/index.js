@@ -534,6 +534,9 @@ const SearchResult = props => {
     return null;
   }
 
+  const {
+    allMeats = []
+  } = data;
   const filterName = data.allMeats.filter(meat => meat.meatName.toLowerCase().includes(meatName.toLowerCase()));
   const filterTags = data.allMeats.filter(meat => meat.meatGroup.toLowerCase().includes(meatName.toLowerCase()));
   const result = lodash_uniqBy__WEBPACK_IMPORTED_MODULE_6___default()([...filterName, ...filterTags], 'meatName');
@@ -548,7 +551,7 @@ const SearchResult = props => {
     animate: "reveal",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 37
     },
     __self: undefined
   }, result.map(meat => {
@@ -557,7 +560,7 @@ const SearchResult = props => {
     }, meat, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 38
+        lineNumber: 39
       },
       __self: undefined
     }));
@@ -804,88 +807,88 @@ const SearchResultItem = props => {
       lineNumber: 94
     },
     __self: undefined
-  }, grill)), open && __jsx("div", {
+  }, grill)), open && (!!marbling || !!tenderness) && __jsx("div", {
     className: "mx-5 my-6 overflow-hidden",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 99
     },
     __self: undefined
-  }, __jsx("div", {
+  }, !!marbling && __jsx("div", {
     className: "inline-block w-24 mr-4",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100
+      lineNumber: 101
     },
     __self: undefined
   }, __jsx("div", {
     className: "relative",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 101
+      lineNumber: 102
     },
     __self: undefined
   }, __jsx(components_Gauge__WEBPACK_IMPORTED_MODULE_3__["default"], {
     percent: marbling,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 102
+      lineNumber: 103
     },
     __self: undefined
   }), __jsx("span", {
     className: "absolute inset-0 flex items-center justify-center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 103
+      lineNumber: 104
     },
     __self: undefined
-  }, "25%")), __jsx("div", {
+  }, marbling + '%')), __jsx("div", {
     className: "my-1 text-center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 105
+      lineNumber: 108
     },
     __self: undefined
-  }, "Marbling")), __jsx("div", {
+  }, "Marbling")), !!tenderness && __jsx("div", {
     className: "inline-block w-24",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 107
+      lineNumber: 112
     },
     __self: undefined
   }, __jsx("div", {
     className: "relative",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 108
+      lineNumber: 113
     },
     __self: undefined
   }, __jsx(components_Gauge__WEBPACK_IMPORTED_MODULE_3__["default"], {
     percent: tenderness,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 109
+      lineNumber: 114
     },
     __self: undefined
   }), __jsx("span", {
     className: "absolute inset-0 flex items-center justify-center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110
+      lineNumber: 115
     },
     __self: undefined
-  }, "50%")), __jsx("div", {
+  }, tenderness + '%')), __jsx("div", {
     className: "my-1 text-center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 112
+      lineNumber: 119
     },
     __self: undefined
   }, "Tenderness"))), __jsx("div", {
     className: "mx-5 my-4",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 117
+      lineNumber: 125
     },
     __self: undefined
   }, __jsx(framer_motion__WEBPACK_IMPORTED_MODULE_1__["motion"].span, {
@@ -895,7 +898,7 @@ const SearchResultItem = props => {
     className: "cursor-pointer inline-block hover:bg-teal-200 rounded-full px-3 py-1 text-sm font-semibold text-teal-700 hover:text-teal-900",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 118
+      lineNumber: 126
     },
     __self: undefined
   }, "#photography"), __jsx(framer_motion__WEBPACK_IMPORTED_MODULE_1__["motion"].span, {
@@ -905,7 +908,7 @@ const SearchResultItem = props => {
     className: "cursor-pointer inline-block hover:bg-teal-200 rounded-full px-3 py-1 text-sm font-semibold text-teal-700 hover:text-teal-900",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 124
+      lineNumber: 132
     },
     __self: undefined
   }, "#travel"), __jsx(framer_motion__WEBPACK_IMPORTED_MODULE_1__["motion"].span, {
@@ -915,7 +918,7 @@ const SearchResultItem = props => {
     className: "cursor-pointer inline-block hover:bg-teal-200 rounded-full px-3 py-1 text-sm font-semibold text-teal-700 hover:text-teal-900",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 130
+      lineNumber: 138
     },
     __self: undefined
   }, "#winter")));
