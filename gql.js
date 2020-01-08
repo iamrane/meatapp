@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 export const getMeatsQuery = gql`
 	query allMeats {
-		allMeats {
+		meats {
 			id
 			slug
 			shortDescription
@@ -13,10 +13,10 @@ export const getMeatsQuery = gql`
 			medium
 			wellDone
 			stew
-			oven
+			roast
 			fry
 			grill
-			meatGroup
+			tags
 		}
 	}
 `;
@@ -34,10 +34,10 @@ export const getMeatBySlugQuery = gql`
 			medium
 			wellDone
 			stew
-			oven
+			roast
 			fry
 			grill
-			meatGroup
+			tags
 		}
 	}
 `;
@@ -54,10 +54,10 @@ export const updateMeatQuery = gql`
 		$medium: Int!
 		$wellDone: Int!
 		$stew: String!
-		$oven: String!
+		$roast: String!
 		$fry: String!
 		$grill: String!
-		$meatGroup: String!
+		$tags: String!
 	) {
 		updateMeat(
 			id: $id
@@ -70,10 +70,10 @@ export const updateMeatQuery = gql`
 			medium: $medium
 			wellDone: $wellDone
 			stew: $stew
-			oven: $oven
+			roast: $roast
 			fry: $fry
 			grill: $grill
-			meatGroup: $meatGroup
+			tags: $tags
 		) {
 			id
 			slug
@@ -85,10 +85,10 @@ export const updateMeatQuery = gql`
 			medium
 			wellDone
 			stew
-			oven
+			roast
 			fry
 			grill
-			meatGroup
+			tags
 		}
 	}
 `;
@@ -104,10 +104,10 @@ export const createMeatQuery = gql`
 		$medium: Int!
 		$wellDone: Int!
 		$stew: String!
-		$oven: String!
+		$roast: String!
 		$fry: String!
 		$grill: String!
-		$meatGroup: String!
+		$tags: String!
 	) {
 		createMeat(
 			slug: $slug
@@ -119,10 +119,10 @@ export const createMeatQuery = gql`
 			medium: $medium
 			wellDone: $wellDone
 			stew: $stew
-			oven: $oven
+			roast: $roast
 			fry: $fry
 			grill: $grill
-			meatGroup: $meatGroup
+			tags: $tags
 		) {
 			id
 			slug
@@ -134,10 +134,10 @@ export const createMeatQuery = gql`
 			medium
 			wellDone
 			stew
-			oven
+			roast
 			fry
 			grill
-			meatGroup
+			tags
 		}
 	}
 `;

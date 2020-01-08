@@ -3,6 +3,9 @@ import App from 'next/app';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { Formik } from 'formik';
 import withData from 'utils/apollo';
+import Header from 'components/Header';
+import SearchForm from 'components/SearchForm';
+
 import 'styles/tailwind.css';
 
 class MyApp extends App {
@@ -11,7 +14,17 @@ class MyApp extends App {
 		return (
 			<ApolloProvider client={apollo}>
 				<Formik initialValues={{ searchString: '' }}>
-					<Component {...pageProps} />
+					<div className="table h-screen w-full max-w-lg m-auto">
+						<div className="table-cell align-middle">
+							<div className="my-4">
+								<Header />
+							</div>
+							<div className="my-4">
+								<SearchForm />
+							</div>
+							<Component {...pageProps} />
+						</div>
+					</div>
 				</Formik>
 			</ApolloProvider>
 		);

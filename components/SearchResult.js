@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useQuery } from '@apollo/react-hooks';
-import { useField } from 'formik';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/router';
 import uniqBy from 'lodash/uniqBy';
 import isEmpty from 'lodash/isEmpty';
 import { getMeatsQuery } from 'gql';
@@ -16,27 +16,44 @@ const variants = {
 };
 
 const SearchResult = props => {
-	const [field, meta] = useField('searchString');
-	const { value: meatName } = meta;
+	const router = useRouter();
+	const { searchString } = router.query;
+	const [activeMeatId, setActiveMeatId] = useState();
 	const { data, loading } = useQuery(getMeatsQuery);
 
-	if (meatName.length < 3 || loading) {
+	console.log('data', data);
+	console.log('searchString', searchString);
+
+	if (searchString.length < 3 || loading) {
 		return null;
 	}
 
-	const { allMeats = [] } = data;
-	const filterName = data.allMeats.filter(meat => meat.meatName.toLowerCase().includes(meatName.toLowerCase()));
-	const filterTags = data.allMeats.filter(meat => meat.meatGroup.toLowerCase().includes(meatName.toLowerCase()));
+	const { meats = [] } = data;
+	const filterName = meats.filter(meat => meat.meatName.toLowerCase().includes(searchString.toLowerCase()));
+	const filterTags = meats.filter(meat => meat.tags.toLowerCase().includes(searchString.toLowerCase()));
 	const result = uniqBy([...filterName, ...filterTags], 'meatName');
 
 	if (isEmpty(result)) {
 		return null;
 	}
 
+	function handleMeatClick(id) {
+		return event => {
+			setActiveMeatId(id);
+		};
+	}
+
 	return (
 		<motion.div variants={variants} initial="initial" animate="reveal">
 			{result.map(meat => {
-				return <SearchResultItem key={meat.id} {...meat} />;
+				return (
+					<SearchResultItem
+						key={meat.id}
+						meat={meat}
+						open={activeMeatId === meat.id}
+						onClick={handleMeatClick(meat.id)}
+					/>
+				);
 			})}
 		</motion.div>
 	);

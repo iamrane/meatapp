@@ -5,7 +5,7 @@ import { createHttpLink } from 'apollo-link-http';
 import fetch from 'isomorphic-unfetch';
 
 // Update the GraphQL endpoint to any instance of GraphQL that you like
-const GRAPHQL_URL = 'https://api.graph.cool/simple/v1/cjoxcaxuqatsg0114qqrvdr7j';
+const GRAPHQL_URL = 'https://eu1.prisma.sh/meatapp/meatapp_service/dev';
 
 const link = createHttpLink({
 	fetch, // Switches between unfetch & node-fetch for client & server.
