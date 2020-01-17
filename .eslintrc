@@ -1,0 +1,27 @@
+{
+	"env": {
+		"browser": true,
+		"es6": true
+	},
+	"parser": "babel-eslint",
+	"extends": ["eslint:recommended", "plugin:react/recommended", "airbnb", "prettier"],
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": 2019,
+		"sourceType": "module"
+	},
+	"plugins": ["react"],
+	"globals": {
+		"process": true
+	},
+	"rules": {
+		"react/react-in-jsx-scope": "off"
+	}
+}

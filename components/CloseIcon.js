@@ -1,5 +1,3 @@
-import React from 'react';
-
 function CloseIcon(props) {
 	return (
 		<svg

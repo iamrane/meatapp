@@ -1,10 +1,8 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import LambIcon from 'components/LambIcon';
 import BeefIcon from 'components/BeefIcon';
 import ChickenIcon from 'components/ChickenIcon';
 import FishIcon from 'components/FishIcon';
-import PorkIcon from 'components/PorkIcon';
 import GameIcon from 'components/GameIcon';
 import CloseIcon from 'components/CloseIcon';
 

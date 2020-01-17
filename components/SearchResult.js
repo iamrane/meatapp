@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useField } from 'formik';
 import { useQuery } from '@apollo/react-hooks';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useRouter } from 'next/router';
 import uniqBy from 'lodash/uniqBy';
 import isEmpty from 'lodash/isEmpty';
 import { getMeatsQuery } from 'gql';
@@ -16,8 +16,8 @@ const variants = {
 };
 
 const SearchResult = props => {
-	const router = useRouter();
-	const { searchString } = router.query;
+	const [field, meta] = useField('searchString');
+	const { value: searchString } = meta;
 	const [activeMeatId, setActiveMeatId] = useState();
 	const { data, loading } = useQuery(getMeatsQuery);
 

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Pill = ({ active, onClick: handleClick, children }) => {
 	let classNames =
 		'inline-block border border-white rounded hover:border-gray-200 text-teal-500 hover:bg-gray-200 py-1 px-3';

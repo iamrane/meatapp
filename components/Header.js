@@ -1,12 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { useField } from 'formik';
 import { motion } from 'framer-motion';
-
 import Logo from 'components/Logo';
 
 const Header = props => {
-	const [field, meta] = useField('searchString');
+	const [meta] = useField('searchString');
 	const { value: searchString } = meta;
 
 	return (

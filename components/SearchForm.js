@@ -1,11 +1,12 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, Form, useField } from 'formik';
 import { motion, AnimatePresence } from 'framer-motion';
-import Router from 'next/router';
-import Icon from 'components/Icon';
+import Router, { useRouter } from 'next/router';
 
 const SearchForm = props => {
+	const router = useRouter();
+	const { searchString } = router.query;
+
 	const [field, meta, helpers] = useField('searchString');
 	const { value } = meta;
 	const { setValue } = helpers;
@@ -18,7 +19,14 @@ const SearchForm = props => {
 					className="shadow appearance-none border rounded-lg w-full py-3 px-4 pr-6 text-lg text-gray-700 leading-tight focus:outline-none focus:shadow-lg"
 					placeholder="Search for meat!"
 					onChange={event => {
-						Router.push({ pathname: '/search', query: { searchString: event.target.value } });
+						console.log('field', field);
+						console.log('meta', meta);
+						console.log('helpers', helpers);
+						Router.push({
+							pathname: '/search',
+							query: { searchString: event.target.value },
+						});
+						field.onChange(event);
 					}}
 				/>
 				<AnimatePresence>
