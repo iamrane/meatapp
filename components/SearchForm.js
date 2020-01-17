@@ -1,6 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Field, Form, useField } from 'formik';
 import { motion, AnimatePresence } from 'framer-motion';
 import Router from 'next/router';
+import Icon from 'components/Icon';
 
 const SearchForm = () => {
 	const [field, meta, helpers] = useField('searchString');
