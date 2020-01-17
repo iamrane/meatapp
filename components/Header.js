@@ -2,7 +2,7 @@ import { useField } from 'formik';
 import { motion } from 'framer-motion';
 import Logo from 'components/Logo';
 
-const Header = props => {
+const Header = () => {
 	const [meta] = useField('searchString');
 	const { value: searchString } = meta;
 

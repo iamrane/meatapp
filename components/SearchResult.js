@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { useField } from 'formik';
 import { useQuery } from '@apollo/react-hooks';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import uniqBy from 'lodash/uniqBy';
 import isEmpty from 'lodash/isEmpty';
 import { getMeatsQuery } from 'gql';
@@ -15,14 +14,11 @@ const variants = {
 	},
 };
 
-const SearchResult = props => {
-	const [field, meta] = useField('searchString');
+const SearchResult = () => {
+	const [, meta] = useField('searchString');
 	const { value: searchString } = meta;
 	const [activeMeatId, setActiveMeatId] = useState();
 	const { data, loading } = useQuery(getMeatsQuery);
-
-	console.log('data', data);
-	console.log('searchString', searchString);
 
 	if (searchString.length < 3 || loading) {
 		return null;
@@ -38,7 +34,7 @@ const SearchResult = props => {
 	}
 
 	function handleMeatClick(id) {
-		return event => {
+		return () => {
 			setActiveMeatId(id);
 		};
 	}

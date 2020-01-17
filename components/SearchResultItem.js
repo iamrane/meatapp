@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { motion, AnimatePresence } from 'framer-motion';
 import Pill from 'components/Pill';
 import Gauge from 'components/Gauge';
@@ -21,6 +22,7 @@ const SearchResultItem = props => {
 		onClick,
 		meat: { slug, meatName, shortDescription, fry, stew, roast, grill, marbling, tenderness, tags },
 	} = props;
+
 	const [tabIndex, setTabIndex] = useState(0);
 
 	function handleTabClick(index) {
@@ -40,8 +42,6 @@ const SearchResultItem = props => {
 	if (open) {
 		console.log(props);
 	}
-
-	const classes = 'cursor-pointer bg-white rounded-lg overflow-hidden shadow-lg my-4';
 
 	return (
 		<motion.div
@@ -71,7 +71,11 @@ const SearchResultItem = props => {
 				{open && (
 					<motion.div className="overflow-hidden" {...openProps}>
 						<div className="mx-5 my-4 overflow-hidden">
-							<img src="https://placeimg.com/640/480/any" className="max-w-full rounded-lg shadow-lg" />
+							<img
+								alt="dummy"
+								src="https://placeimg.com/640/480/any"
+								className="max-w-full rounded-lg shadow-lg"
+							/>
 						</div>
 
 						<div className="mx-5 my-6">
@@ -145,6 +149,29 @@ const SearchResultItem = props => {
 			</div>
 		</motion.div>
 	);
+};
+
+SearchResultItem.propTypes = {
+	open: PropTypes.bool,
+	onClick: PropTypes.func,
+	meat: PropTypes.shape({
+		slug: PropTypes.string,
+		meatName: PropTypes.string,
+		shortDescription: PropTypes.string,
+		fry: PropTypes.string,
+		stew: PropTypes.string,
+		roast: PropTypes.string,
+		grill: PropTypes.string,
+		marbling: PropTypes.number,
+		tenderness: PropTypes.number,
+		tags: PropTypes.string,
+	}),
+};
+
+SearchResultItem.defaultProps = {
+	open: false,
+	onClick: f => f,
+	meat: undefined,
 };
 
 export default SearchResultItem;

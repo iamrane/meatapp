@@ -57,4 +57,10 @@ Gauge.propTypes = {
 	percent: PropTypes.number,
 };
 
+Gauge.defaultProps = {
+	style: {},
+	className: null,
+	percent: null,
+};
+
 export default Gauge;

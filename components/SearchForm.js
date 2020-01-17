@@ -1,12 +1,8 @@
-import PropTypes from 'prop-types';
 import { Field, Form, useField } from 'formik';
 import { motion, AnimatePresence } from 'framer-motion';
-import Router, { useRouter } from 'next/router';
+import Router from 'next/router';
 
-const SearchForm = props => {
-	const router = useRouter();
-	const { searchString } = router.query;
-
+const SearchForm = () => {
 	const [field, meta, helpers] = useField('searchString');
 	const { value } = meta;
 	const { setValue } = helpers;
