@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { motion, AnimatePresence } from 'framer-motion';
+import Router from 'next/router';
 import Pill from 'components/Pill';
 import Gauge from 'components/Gauge';
 import Icon from 'components/Icon';
@@ -27,7 +28,6 @@ const SearchResultItem = props => {
 
 	function handleTabClick(index) {
 		return event => {
-			console.log(event.target);
 			event.preventDefault();
 			setTabIndex(index);
 		};
@@ -137,15 +137,24 @@ const SearchResultItem = props => {
 			</AnimatePresence>
 
 			<div className="mx-5 my-4">
-				{tags.split(',').map(tag => (
-					<motion.span
-						key={tag}
-						whileHover={{ scale: 1.1 }}
-						className="cursor-pointer inline-block hover:bg-teal-200 rounded-full px-3 py-1 text-sm font-semibold text-teal-700 hover:text-teal-900"
-					>
-						{tag.trim()}
-					</motion.span>
-				))}
+				{tags
+					.split(',')
+					.map(tag => tag.trim())
+					.map(tag => (
+						<motion.a
+							key={tag}
+							whileHover={{ scale: 1.1 }}
+							className="cursor-pointer inline-block bg-blue-200 rounded-full px-3 py-1 text-sm font-semibold text-blue-700 hover:text-blue-900 mr-2"
+							onClick={() => {
+								Router.push({
+									pathname: '/search',
+									query: { searchString: tag },
+								});
+							}}
+						>
+							{tag.trim()}
+						</motion.a>
+					))}
 			</div>
 		</motion.div>
 	);

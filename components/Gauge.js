@@ -38,14 +38,6 @@ const Gauge = props => {
 	);
 };
 
-Gauge.defaultProps = {
-	strokeWidth: 10,
-	strokeColor: 'rgba(0, 0, 0, 0.10)',
-	trailWidth: 10,
-	trailColor: 'rgba(0, 0, 0, 0.10)',
-	strokeLinecap: 'square',
-};
-
 Gauge.propTypes = {
 	strokeWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	strokeColor: PropTypes.string,
@@ -58,6 +50,11 @@ Gauge.propTypes = {
 };
 
 Gauge.defaultProps = {
+	strokeWidth: 10,
+	strokeColor: 'rgba(0, 0, 0, 0.10)',
+	trailWidth: 10,
+	trailColor: 'rgba(0, 0, 0, 0.10)',
+	strokeLinecap: 'square',
 	style: {},
 	className: null,
 	percent: null,
