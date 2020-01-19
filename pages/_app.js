@@ -14,7 +14,7 @@ class MyApp extends App {
 		return (
 			<ApolloProvider client={apollo}>
 				<Formik enableReinitialize initialValues={{ searchString: router?.query?.searchString || '' }}>
-					<div className="table h-screen w-full max-w-lg m-auto">
+					<div className="table h-full w-full max-w-lg m-auto">
 						<div className="table-cell align-middle">
 							<div className="my-4">
 								<Header />

@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+#__next,
+body,
+html {
+	@apply h-full;
+}
+
 body {
 	@apply bg-teal-400 px-2;
 }
